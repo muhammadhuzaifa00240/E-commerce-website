@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURELIA — Modern Everyday Fashion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="E-commerce.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader">
+  <span class="preloader-mark">A</span>
+</div>
+
+<!-- ============ ANNOUNCEMENT BAR ============ -->
+<div class="announce-bar">
+  <p>Free shipping on orders over $75 — use code <strong>AURELIA10</strong> for 10% off your first order</p>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner container">
+    <a href="#home" class="logo">AUR<span>ELIA</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#shop" class="nav-link">Shop</a>
+      <a href="#categories" class="nav-link">Categories</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" id="wishlistToggle" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <span class="badge" id="wishlistCount">0</span>
+      </button>
+      <button class="icon-btn" id="cartToggle" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Search overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box container">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search for products, e.g. ‘leather jacket’">
+      <button id="searchClose" aria-label="Close search">&times;</button>
+    </div>
+    <div class="search-results container" id="searchResults"></div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner container">
+    <div class="hero-copy fade-in-up">
+      <span class="hero-tag">New Season — 2026 Edit</span>
+      <h1 class="hero-title">Wear what<br> moves <em>you.</em></h1>
+      <p class="hero-sub">Considered essentials and statement pieces, cut for real life. Every order ships in 48 hours.</p>
+      <div class="hero-cta-row">
+        <a href="#shop" class="btn btn-primary">Shop the Edit</a>
+        <a href="#categories" class="btn btn-ghost">Browse Categories</a>
+      </div>
+    </div>
+
+    <div class="hero-tag-card slide-in-right">
+      <div class="tag-hole"></div>
+      <span class="tag-percent">30%</span>
+      <span class="tag-label">Off Outerwear</span>
+      <span class="tag-code">Code: COLD30</span>
+    </div>
+  </div>
+  <div class="hero-scroll-cue">
+    <span></span> Scroll
+  </div>
+</section>
+
+<!-- ============ MARQUEE STRIP ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>FREE RETURNS&nbsp;&nbsp;✦&nbsp;&nbsp;NEW DROPS WEEKLY&nbsp;&nbsp;✦&nbsp;&nbsp;ETHICALLY MADE&nbsp;&nbsp;✦&nbsp;&nbsp;48HR SHIPPING&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    <span>FREE RETURNS&nbsp;&nbsp;✦&nbsp;&nbsp;NEW DROPS WEEKLY&nbsp;&nbsp;✦&nbsp;&nbsp;ETHICALLY MADE&nbsp;&nbsp;✦&nbsp;&nbsp;48HR SHIPPING&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- ============ CATEGORIES ============ -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="section-head fade-in-up">
+      <span class="eyebrow">Shop by Department</span>
+      <h2>Find your section</h2>
+    </div>
+    <div class="cat-grid" id="catGrid"><!-- injected by JS --></div>
+  </div>
+</section>
+
+<!-- ============ SHOP / PRODUCTS ============ -->
+<section class="shop" id="shop">
+  <div class="container">
+    <div class="section-head fade-in-up">
+      <span class="eyebrow">The Collection</span>
+      <h2>All products</h2>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-bar fade-in-up">
+      <div class="filter-group" id="categoryFilters">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="Men">Men</button>
+        <button class="filter-chip" data-filter="Women">Women</button>
+        <button class="filter-chip" data-filter="Kids">Kids</button>
+        <button class="filter-chip" data-filter="Accessories">Accessories</button>
+        <button class="filter-chip" data-filter="Shoes">Shoes</button>
+      </div>
+
+      <div class="filter-right">
+        <div class="price-filter">
+          <label for="priceRange">Max price: <span id="priceVal">$300</span></label>
+          <input type="range" id="priceRange" min="20" max="300" value="300" step="10">
+        </div>
+        <select id="sortSelect" class="sort-select">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Rating: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <p class="results-count" id="resultsCount"></p>
+
+    <div class="product-grid" id="productGrid"><!-- injected by JS --></div>
+    <p class="no-results" id="noResults" hidden>No products match your filters. Try widening your search.</p>
+  </div>
+</section>
+
+<!-- ============ FEATURED / SALE ============ -->
+<section class="featured" id="featured">
+  <div class="container">
+    <div class="section-head fade-in-up">
+      <span class="eyebrow">Limited Time</span>
+      <h2>Featured &amp; on sale</h2>
+    </div>
+    <div class="featured-grid" id="featuredGrid"><!-- injected by JS --></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container about-inner">
+    <div class="about-media fade-in-up">
+      <div class="about-frame"></div>
+    </div>
+    <div class="about-copy fade-in-up">
+      <span class="eyebrow">Our Story</span>
+      <h2>Made to be worn, <br>not just bought.</h2>
+      <p>AURELIA began in a small studio with one belief: clothing should feel as good as it looks. Today we work with family-run mills and ethical factories across the world to make pieces that last seasons, not weeks.</p>
+      <div class="about-stats">
+        <div><strong>12k+</strong><span>Happy customers</span></div>
+        <div><strong>4.8/5</strong><span>Average rating</span></div>
+        <div><strong>48hr</strong><span>Dispatch time</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS SLIDER ============ -->
+<section class="reviews">
+  <div class="container">
+    <div class="section-head fade-in-up light">
+      <span class="eyebrow">From Our Customers</span>
+      <h2>Loved, worn, repeated</h2>
+    </div>
+    <div class="reviews-slider">
+      <button class="slider-arrow prev" id="reviewPrev" aria-label="Previous review">&#8592;</button>
+      <div class="reviews-track-wrap">
+        <div class="reviews-track" id="reviewsTrack"><!-- injected by JS --></div>
+      </div>
+      <button class="slider-arrow next" id="reviewNext" aria-label="Next review">&#8594;</button>
+    </div>
+    <div class="reviews-dots" id="reviewDots"></div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter">
+  <div class="container newsletter-inner fade-in-up">
+    <h2>Get 10% off your first order</h2>
+    <p>Sign up for restock alerts, early access to drops, and the occasional good story.</p>
+    <form id="newsletterForm" class="newsletter-form">
+      <input type="email" id="newsletterEmail" placeholder="you@example.com" required>
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    <p class="newsletter-msg" id="newsletterMsg"></p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="logo">AUR<span>ELIA</span></a>
+      <p>Considered fashion for real, everyday life. Designed in-house, made to last.</p>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram" class="social-btn">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook" class="social-btn">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter / X" class="social-btn">
+          <svg viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 9.4-8.4 16.2-16.5 11.3 2.3.1 4.6-.6 6.2-2C5 15.9 2.8 12.8 2.8 9c1.6 1 3.4 1.6 5.3 1.6C5.7 7.4 6.6 3.6 9.8 2.5c2.3 2 5.3 3.1 8.4 3-.1-.4-.2-.9-.2-1.3a4.7 4.7 0 0 1 4-4.2z"/></svg>
+        </a>
+        <a href="#" aria-label="Pinterest" class="social-btn">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 17l1.2-5M12 12a2.5 2.5 0 1 0-2.5-3.5"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#shop">All Products</a>
+      <a href="#categories">Categories</a>
+      <a href="#featured">Sale</a>
+      <a href="#">Gift Cards</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Sustainability</a>
+      <a href="#">Press</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="mailto:hello@aurelia-shop.com">hello@aurelia-shop.com</a>
+      <a href="tel:+18005551234">+1 (800) 555-1234</a>
+      <span class="footer-addr">128 Market Street, San Francisco, CA</span>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; 2026 AURELIA. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay-dim" id="overlayDim"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="drawer-head">
+    <h3>Your Bag <span id="drawerCount">(0)</span></h3>
+    <button id="cartClose" aria-label="Close cart">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"><!-- injected by JS --></div>
+  <div class="cart-empty" id="cartEmpty">
+    <p>Your bag is empty.</p>
+    <a href="#shop" class="btn btn-ghost" id="cartEmptyShop">Start Shopping</a>
+  </div>
+  <div class="drawer-footer" id="drawerFooter">
+    <div class="drawer-row"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
+    <div class="drawer-row small"><span>Shipping</span><span id="cartShipping">Free</span></div>
+    <div class="drawer-row total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<!-- ============ WISHLIST DRAWER ============ -->
+<aside class="cart-drawer wishlist-drawer" id="wishlistDrawer">
+  <div class="drawer-head">
+    <h3>Wishlist <span id="drawerWishCount">(0)</span></h3>
+    <button id="wishlistClose" aria-label="Close wishlist">&times;</button>
+  </div>
+  <div class="cart-items" id="wishlistItems"><!-- injected by JS --></div>
+  <div class="cart-empty" id="wishlistEmpty">
+    <p>Nothing saved yet.</p>
+    <a href="#shop" class="btn btn-ghost" id="wishlistEmptyShop">Discover Products</a>
+  </div>
+</aside>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<!-- ============ QUICK VIEW MODAL ============ -->
+<div class="modal-dim" id="modalDim">
+  <div class="quick-view" id="quickView"><!-- injected by JS --></div>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
+<script src="E-commerce.js"></script>
+</body>
+</html>
